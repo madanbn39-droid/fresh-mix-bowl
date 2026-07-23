@@ -77,10 +77,14 @@ export default function CartPage() {
                       <span className="font-bold text-lg text-primary">${(item.price * item.quantity).toFixed(2)}</span>
                     </div>
                     
-                    <p className="text-sm font-medium text-muted-foreground mb-2">{item.type}</p>
+                    <p className="text-sm font-medium text-muted-foreground mb-2">
+                      {item.isCustomizable ? "Custom Bowl" : "Signature Bowl"}
+                    </p>
                     
-                    {item.description && (
-                      <p className="text-xs text-muted-foreground mb-4 max-w-sm line-clamp-2">{item.description}</p>
+                    {item.isCustomizable && item.selectedIngredients && (
+                      <p className="text-xs text-muted-foreground mb-4 max-w-sm line-clamp-2">
+                        Bases: {item.selectedIngredients.bases.join(', ')}
+                      </p>
                     )}
                     
                     <div className="flex items-center justify-between w-full mt-auto pt-4 sm:pt-0 border-t sm:border-0 border-border">
